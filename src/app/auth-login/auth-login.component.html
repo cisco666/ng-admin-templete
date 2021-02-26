@@ -1,0 +1,37 @@
+<div class="full-page">
+  <form nz-form [formGroup]="signinForm" class="login-form" (ngSubmit)="submitForm()">
+    <h1>Autenticación Requerida</h1>
+    <nz-form-item>
+
+      <nz-form-control nzErrorTip="Please input your E-mail!">
+
+        <ng-template #user><i nz-icon nzType="user"></i></ng-template>
+        
+        <nz-input-group nzPrefixIcon="user">
+          <input type="email" nz-input formControlName="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Correo Electrónico" />
+        </nz-input-group>
+      </nz-form-control>
+
+    </nz-form-item>
+    <nz-form-item>
+
+      <nz-form-control nzErrorTip="Please input your Password!">
+
+        <ng-template #lock><i nz-icon nzType="lock"></i></ng-template>
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="password" nz-input formControlName="password" placeholder="Password" />
+        </nz-input-group>
+
+      </nz-form-control>
+
+    </nz-form-item>
+    <button 
+      nz-button 
+      [nzLoading]="clicked"
+      class="login-form-button login-form-margin" 
+      [nzType]="'primary'">
+        Iniciar Sesión
+    </button>
+  </form>
+</div>
+  

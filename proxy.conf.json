@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+      "target": "http://localhost/api-rest-cakephp-3.8",
+      "secure": false,
+      "logLevel": "info"
+  }
+}

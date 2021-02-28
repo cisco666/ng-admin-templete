@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth/auth.service';
 import { AlertsService } from '../shared/messages/alerts.service';
@@ -23,10 +24,14 @@ export class AuthLoginComponent implements OnInit {
     public router: Router,
     public authService: AuthService,
     private fb: FormBuilder,
-    private alertService: AlertsService
+    private alertService: AlertsService,
+    private title: Title
   ) { }
 
   ngOnInit(): void {
+
+    this.title.setTitle('Iniciar Sesión');
+
     this.signinForm = this.fb.group({
       email: [null, [Validators.required]],
       password: [null, [Validators.required]]
@@ -68,15 +73,16 @@ export class AuthLoginComponent implements OnInit {
 
           this.alertService.createMessage('success', `¡Bienvenido(a) ${login.usuario.email} !`, 10000);
 
-          this.router.navigate(['dashboard'], { replaceUrl: true });
+          this.router.navigate(['welcome'], { replaceUrl: true });
 
           this.clicked = false;
         })
         .catch(err => {
+          console.log(err);
           if (err.status === 401) {
             this.alertService.createMessage('error', err.error.message, 5000);
           } else {
-            this.alertService.createMessage('error', err.message, 5000);
+            this.alertService.createMessage('error', err.message, 15000);
           }
 
           this.clicked = false;

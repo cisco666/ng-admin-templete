@@ -1,1 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
+
+*, html, body {
+    outline: 0 !important;
+    text-decoration: none !important;
+}
+
+.card-panel {
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    padding: 24px;
+    margin: .5rem 0 1rem 0;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+    background-color: #fff;
+}
+
+
+.image-rounded {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.badge-success {
+    color: #fff !important;
+    background-color: #00c851 !important;
+}
+
+.badge-danger {
+    color: #fff !important;
+    background-color: #ff3547 !important;
+}
+
+.badge-info {
+    color: #fff !important;
+    background-color: #33b5e5 !important;
+}
+
+.mt-1 {
+    margin-top: 5px;
+}
+
+.mt-2 {
+    margin-top: 10px;
+}
+
+.mt-3 {
+    margin-top: 15px;
+}
+
+.mt-4 {
+    margin-top: 20px;
+}
+
+.mt-5 {
+    margin-top: 25px;
+}
+
+.center {
+    margin: auto;
+    width: auto;
+    padding: 10px;
+}
+
+.center-item {
+    text-align: center;
+}

@@ -1,0 +1,80 @@
+<div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+    <div nz-col class="gutter-row" [nzSpan]="15">
+        <div class="card-panel">
+            <div nz-row>
+                <div nz-col nzSpan="8">
+                    <h3 class="card-title">{{ headerTitle }}</h3>
+                </div>
+                <div nz-col nzSpan="4">
+                    <a [routerLink]="['/usuarios']" nz-button nzType="primary" nzSize="medium" nzShape="circle">
+                        <i nz-icon nzType="unordered-list" nzTheme="outline"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <app-loading class="mt-4" *ngIf="isUpdate && !loaded"></app-loading>
+            
+            <form nz-form [formGroup]="usuarioForm" class="mt-4" *ngIf="loaded">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Ingresa un email valido"
+                    [nzValidateStatus]="validaEmail" 
+                    nzHasFeedback 
+                    nzValidatingTip="Validando disponibilidad de correo electrónico"
+                    [nzSpan]="24">
+                        <input type="email" 
+                            #email
+                            nz-input 
+                            formControlName="email" 
+                            name="email" 
+                            pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" 
+                            (blur)="validarEmail(email.value)"
+                            placeholder="Correo Electrónico" />
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item *ngIf="!isUpdate">
+                    <nz-form-control nzErrorTip="Ingresa una contraseña" [nzSpan]="24">
+                        <input type="password" nz-input formControlName="password" placeholder="Contraseña" />
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Selecciona un rol" [nzSpan]="24">
+                        <nz-select formControlName="rol" nzShowSearch nzAllowClear nzPlaceHolder="Selecciona un rol">
+                            <nz-option *ngFor="let rol of roles" nzLabel="{{rol}}" nzValue="{{rol}}"></nz-option>
+                          </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="3">Estatus</nz-form-label>
+                    <nz-switch formControlName="active" [ngModel]="usuario.active" [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+                    <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
+                    <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
+                </nz-form-item>
+
+
+                <button 
+                    type="button"
+                    nz-button 
+                    [nzLoading]="clicked"
+                    [nzType]="'primary'"
+                    (click)="registrar()" 
+                    *ngIf="!isUpdate">
+                        {{ buttonMessage }}
+                </button>
+
+                <button 
+                    type="button"
+                    nz-button 
+                    [nzLoading]="clicked"
+                    [nzType]="'primary'"
+                    (click)="actualizar()" 
+                    *ngIf="isUpdate">
+                        {{ buttonMessage }}
+                </button>
+                
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
@@ -28,7 +28,6 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzI18nModule } from 'ng-zorro-antd/i18n';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
@@ -68,6 +67,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { NzPipesModule } from 'ng-zorro-antd/pipes';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 const ngz = [
   NzAffixModule,
@@ -98,7 +98,6 @@ const ngz = [
   NzFormModule,
   NzGridModule,
   NzI18nModule,
-  NzIconModule,
   NzImageModule,
   NzInputModule,
   NzInputNumberModule,
@@ -137,7 +136,8 @@ const ngz = [
   NzTypographyModule,
   NzUploadModule,
   NzResizableModule,
-  NzPipesModule
+  NzPipesModule,
+  NzSpaceModule
 ];
 
 @NgModule({
@@ -146,6 +146,7 @@ const ngz = [
   ],
   exports: [
     ...ngz
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class NgZorroModule { }

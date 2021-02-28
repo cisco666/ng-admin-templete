@@ -1,0 +1,74 @@
+<div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+
+    <div nz-col class="gutter-row" [nzSpan]="24">
+        <div class="card-panel">
+            <div nz-row>
+                <div nz-col nzSpan="4">
+                    <h3 class="card-title">Lista de Usuarios</h3>
+                </div>
+                <div nz-col nzSpan="6">
+                    <a [routerLink]="['registro']" nz-button nzType="primary" nzSize="medium" nzShape="circle">
+                        <i nz-icon nzType="user-add" nzTheme="outline"></i>
+                    </a>
+                </div>
+            </div>
+            <nz-table
+                nzShowSizeChanger [nzData]="usuarios" [nzFrontPagination]="false"
+                [nzLoading]="loading" [nzTotal]="total" [nzPageSize]="pageSize"
+                [nzScroll]="{ y: '280px' }"
+                [nzPageIndex]="pageIndex" (nzQueryParams)="onQueryParamsChange($event)" class="mt-4">
+
+                <thead>
+                    <tr>
+                        <th nzColumnKey="id" nzWidth="80px">Id</th>
+                        <th nzColumnKey="imagen" nzWidth="80px">Imagen</th>
+                        <th nzColumnKey="email">Email</th>
+                        <th nzColumnKey="active" nzWidth="100px">Estatus</th>
+                        <th nzColumnKey="created">Fecha de Creación</th>
+                        <th nzColumnKey="created">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td>{{ usuario.id }}</td>
+                        <td>
+                            <img class="image-rounded" src="./assets/img/default-user.png" alt="" *ngIf="!usuario.imagenes_usuario">
+                            <img class="image-rounded" [src]="imageSrv + '/' + usuario.imagenes_usuario.dir + '/' + usuario.imagenes_usuario.nombre" alt="" *ngIf="usuario.imagenes_usuario">
+                        </td>
+                        <td>{{ usuario.email }}</td>
+                        <td>
+                            <span [ngClass]="
+                                {
+                                    'badge-success': usuario.active, 
+                                    'badge-danger': !usuario.active
+                                }" 
+                                class="badge badge-pill text-white">
+                                <span *ngIf="usuario.active">ACTIVO</span>
+                                <span *ngIf="!usuario.active">INACTIVO</span>
+                            </span>
+                        </td>
+                        <td>{{ usuario.created | date: 'dd/MM/yyyy H:mm:ss' }}</td>
+                        <td>
+                            <nz-button-group>
+                                <button nz-button>Opciones</button>
+                                <button nz-button nz-dropdown [nzDropdownMenu]="menu1" nzPlacement="bottomRight">
+                                    <i nz-icon nzType="ellipsis" nzTheme="outline"></i>
+                                </button>
+                            </nz-button-group>
+                            <nz-dropdown-menu #menu1="nzDropdownMenu" nzPlacement="topRight">
+                                <ul nz-menu>
+                                <li nz-menu-item routerLink="editar/{{ usuario.id }}">
+                                    <i nz-icon nzType="edit" nzTheme="outline"></i> Editar
+                                </li>
+                                <li nz-menu-item nz-popconfirm nzPopconfirmTitle="¿Desea eliminar el usuario {{ usuario.email }}?" (nzOnConfirm)="eliminar(usuario.id, usuario.email)">
+                                    <i nz-icon nzType="delete" nzTheme="outline"></i> Eliminar
+                                </li>
+                                </ul>
+                            </nz-dropdown-menu>
+                        </td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+    <div nz-row class="center">
+        <div nzSpan="24" class="center-item">
+            <ng-template #indicatorTemplate><i nz-icon nzType="loading"></i></ng-template>
+            <nz-spin nzSimple [nzIndicator]="indicatorTemplate"> </nz-spin>
+            <br>
+            Cargando Información...
+        </div>
+    </div>
+</div>
+

@@ -23,6 +23,14 @@ const routes: Routes = [
         component: UsuariosFormComponent,
         canActivate: [AuthGuard]
       },
+      {
+        path: 'cambiar-imagen/:id',
+        loadChildren: () =>
+          import('src/app/pages/change-image-profile/change-image-profile.module').then(
+            m => m.ChangeImageProfileModule
+          ),
+        canActivate: [AuthGuard] 
+      },
     ]
   }
 ];

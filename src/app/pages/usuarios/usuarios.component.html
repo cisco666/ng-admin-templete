@@ -1,4 +1,4 @@
-<div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+<div nz-row [nzGutter]="{ xs: 16, sm: 16, md: 24, lg: 32 }">
 
     <div nz-col class="gutter-row" [nzSpan]="24">
         <div class="card-panel">
@@ -15,7 +15,6 @@
             <nz-table
                 nzShowSizeChanger [nzData]="usuarios" [nzFrontPagination]="false"
                 [nzLoading]="loading" [nzTotal]="total" [nzPageSize]="pageSize"
-                [nzScroll]="{ y: '280px' }"
                 [nzPageIndex]="pageIndex" (nzQueryParams)="onQueryParamsChange($event)" class="mt-4">
 
                 <thead>
@@ -33,7 +32,7 @@
                         <td>{{ usuario.id }}</td>
                         <td>
                             <img class="image-rounded" src="./assets/img/default-user.png" alt="" *ngIf="!usuario.imagenes_usuario">
-                            <img class="image-rounded" [src]="imageSrv + '/' + usuario.imagenes_usuario.dir + '/' + usuario.imagenes_usuario.nombre" alt="" *ngIf="usuario.imagenes_usuario">
+                            <img nz-image class="image-rounded" [nzSrc]="imageSrv + '/' + usuario.imagenes_usuario.dir + '/' + usuario.imagenes_usuario.nombre" alt="" *ngIf="usuario.imagenes_usuario">
                         </td>
                         <td>{{ usuario.email }}</td>
                         <td>
@@ -57,12 +56,12 @@
                             </nz-button-group>
                             <nz-dropdown-menu #menu1="nzDropdownMenu" nzPlacement="topRight">
                                 <ul nz-menu>
-                                <li nz-menu-item routerLink="editar/{{ usuario.id }}">
-                                    <i nz-icon nzType="edit" nzTheme="outline"></i> Editar
-                                </li>
-                                <li nz-menu-item nz-popconfirm nzPopconfirmTitle="¿Desea eliminar el usuario {{ usuario.email }}?" (nzOnConfirm)="eliminar(usuario.id, usuario.email)">
-                                    <i nz-icon nzType="delete" nzTheme="outline"></i> Eliminar
-                                </li>
+                                    <li nz-menu-item routerLink="editar/{{ usuario.id }}">
+                                        <i nz-icon nzType="edit" nzTheme="outline"></i> Editar
+                                    </li>
+                                    <li nz-menu-item nz-popconfirm nzPopconfirmTitle="¿Desea eliminar el usuario {{ usuario.email }}?" (nzOnConfirm)="eliminar(usuario.id, usuario.email)">
+                                        <i nz-icon nzType="delete" nzTheme="outline"></i> Eliminar
+                                    </li>
                                 </ul>
                             </nz-dropdown-menu>
                         </td>

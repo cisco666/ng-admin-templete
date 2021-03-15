@@ -4,23 +4,28 @@
               nzWidth="256px"
               nzBreakpoint="md"
               [(nzCollapsed)]="isCollapsed"
-              [nzTrigger]="null">
+              [nzTrigger]="null"
+              [nzTheme]="'dark'">
       <div class="sidebar-logo">
         <a href="https://ng.ant.design/" target="_blank">
           <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
           <h1>Ant Design Of Angular</h1>
         </a>
       </div>
-      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <ul nz-menu nzMode="inline" [nzTheme]="'dark'" [nzInlineCollapsed]="isCollapsed">
 
-        <li nz-menu-item routerLink="/welcome">
-          <i nz-icon nzType="dashboard"></i>
-          <span>Dashboard</span>
+        <li nz-menu-item>
+          <a [routerLink]="'/welcome'" routerLinkActive="active">
+            <i nz-icon nzType="dashboard"></i>
+            <span>Dashboard</span>
+          </a>
         </li>
 
-        <li nz-menu-item routerLink="/usuarios">
-          <i nz-icon nzType="usergroup-delete"></i>
-          <span>Usuarios</span>
+        <li nz-menu-item>
+          <a [routerLink]="'/usuarios'" routerLinkActive="active">
+            <i nz-icon nzType="usergroup-delete"></i>
+            <span>Usuarios</span>
+          </a>
         </li>
 
         <nz-divider></nz-divider>
@@ -31,7 +36,7 @@
               <a>Cambiar Contraseña</a>
             </li>
             <li nz-menu-item nzMatchRouter>
-              <a>Cambiar Imagen de perfil</a>
+              <a [routerLink]="['usuarios/cambiar-imagen/' + currentUser.id]" routerLinkActive="active">Cambiar Imagen de perfil</a>
             </li>
           </ul>
         </li>
@@ -46,12 +51,12 @@
     <nz-layout>
       <nz-header>
         <div class="app-header">
-          <!-- <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
               <i class="trigger"
                  nz-icon
                  [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
               ></i>
-          </span> -->
+          </span>
         </div>
       </nz-header>
       <nz-content>

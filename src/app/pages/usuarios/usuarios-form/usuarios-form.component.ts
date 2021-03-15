@@ -98,14 +98,18 @@ export class UsuariosFormComponent implements OnInit {
     if (email) {
       this.validaEmail = 'validating';
 
-      this.usuariosService.validaEmail(email).subscribe(res => {
+      this.usuariosService.validaEmail(email, this.usuarioId).subscribe(res => {
 
         if (res.body.code === 200) {
+          
           this.validaEmail = 'success';
-          this.alertService.createMessage('success', res.body.message, 5000);
+
+          if (res.body.message.length > 0) {
+            this.alertService.createMessage('success', res.body.message, 15000);
+          }
         } else {
           this.validaEmail = 'error';
-          this.alertService.createMessage('error', res.body.message, 5000);
+          this.alertService.createMessage('error', res.body.message, 15000);
         }
       }); 
     }

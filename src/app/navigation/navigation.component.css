@@ -55,8 +55,9 @@
     font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
     vertical-align: middle;
   }
-  
+
   nz-header {
+    position: fixed;
     padding: 0;
     width: 100%;
     z-index: 2;
@@ -71,12 +72,17 @@
   }
   
   nz-content {
-    margin: 24px;
+    margin: 40px;
+    margin-top: 75px;
   }
   
   .inner-content {
     padding: 24px;
     background: #fff;
     height: 100%;
+  }
+
+  .ant-layout {
+    overflow-x: hidden !important;
   }
   

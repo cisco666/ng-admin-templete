@@ -23,8 +23,8 @@ export class UsuariosService {
     return this.http.get<IUsuariosPaginator>(`${server}/api/v1/usuarios`, { params });
   }
 
-  public validaEmail(email: string): any {
-    return this.http.post<any>(`${server}/api/v1/usuarios/valida_email`, {email}, { observe: 'response' });
+  public validaEmail(email: string, id: any): any {
+    return this.http.post<any>(`${server}/api/v1/usuarios/valida_email`, { id, email }, { observe: 'response' });
   }
 
   public index(): any {

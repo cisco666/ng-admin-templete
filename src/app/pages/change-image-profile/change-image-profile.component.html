@@ -1,0 +1,40 @@
+<div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+    <div nz-col class="gutter-row" [nzSpan]="11">
+        <nz-card nzTitle="Cambiar imágen de perfil">
+            <div class="center-item">
+                <img nz-image width="200px" height="200px" nzSrc="error" [nzSrc]="userImage" alt="" />
+
+                <form nz-form [formGroup]="changeImage" class="mt-4">
+                    <input #imageInput formControlName="image" hidden="true" type="file" (change)="imageInputChange($event)" accept="image/png, image/jpeg"/>
+
+                    <section id="controls" *ngIf="!startUpload">
+                        <button 
+                            type="button"
+                            nz-button 
+                            [nzType]="'default'"
+                            nzShape="round"
+                            (click)="imageInput.click()">
+                            <i nz-icon nzType="select" nzTheme="outline"></i>
+                            Selecciona tu nueva imagen
+                        </button>
+
+                        <button 
+                            class="mt-4" 
+                            nz-button 
+                            nzType="primary" 
+                            nzShape="round"
+                            (click)="uploadImage()"
+                            *ngIf="imageLoaded">
+                            <i nz-icon nzType="cloud-upload" nzTheme="outline"></i>
+                            Cambiar Imagen
+                        </button>
+                    </section>
+
+                    <section id="progress" *ngIf="startUpload">
+                        <nz-progress [nzPercent]="percent" nzStatus="active"></nz-progress>
+                    </section>
+                </form>
+            </div>
+        </nz-card>
+    </div>
+</div>

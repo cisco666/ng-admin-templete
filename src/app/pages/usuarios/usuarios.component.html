@@ -1,21 +1,11 @@
 <div nz-row [nzGutter]="{ xs: 16, sm: 16, md: 24, lg: 32 }">
 
     <div nz-col class="gutter-row" [nzSpan]="24">
-        <div class="card-panel">
-            <div nz-row>
-                <div nz-col nzSpan="4">
-                    <h3 class="card-title">Lista de Usuarios</h3>
-                </div>
-                <div nz-col nzSpan="6">
-                    <a [routerLink]="['registro']" nz-button nzType="primary" nzSize="medium" nzShape="circle">
-                        <i nz-icon nzType="user-add" nzTheme="outline"></i>
-                    </a>
-                </div>
-            </div>
+        <nz-card nzTitle="Lista de Usuarios" [nzExtra]="extraTemplate">
             <nz-table
                 nzShowSizeChanger [nzData]="usuarios" [nzFrontPagination]="false"
                 [nzLoading]="loading" [nzTotal]="total" [nzPageSize]="pageSize"
-                [nzPageIndex]="pageIndex" (nzQueryParams)="onQueryParamsChange($event)" class="mt-4">
+                [nzPageIndex]="pageIndex" (nzQueryParams)="onQueryParamsChange($event)">
 
                 <thead>
                     <tr>
@@ -77,6 +67,11 @@
                     </tr>
                 </tbody>
             </nz-table>
-        </div>
+        </nz-card>
+        <ng-template #extraTemplate>
+            <a [routerLink]="['registro']" nz-button nzType="primary" nzSize="medium" nzShape="circle">
+                <i nz-icon nzType="user-add" nzTheme="outline"></i>
+            </a>
+        </ng-template>
     </div>
 </div>

@@ -1,33 +1,14 @@
 <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
 
-    <div nz-col class="gutter-row" [nzSpan]="24">
-        <div class="card-panel">
-            <h3 class="card-title">Example Card</h3>
-        </div>
-    </div>
-
-    <div nz-col class="gutter-row" [nzSpan]="12">
-        <div class="card-panel">
-            <h3 class="card-title">Example Card</h3>
-        </div>
-    </div>
-
-    <div nz-col class="gutter-row" [nzSpan]="12">
-        <div class="card-panel">
-            <h3 class="card-title">Example Card</h3>
-        </div>
-    </div>
-
-    <div nz-col class="gutter-row" [nzSpan]="16">
-        <div class="card-panel">
-            <h3 class="card-title">Example Card</h3>
-        </div>
-    </div>
-
-    <div nz-col class="gutter-row" [nzSpan]="8">
-        <div class="card-panel">
-            <h3 class="card-title">Example Card</h3>
-        </div>
+    <div nz-col class="gutter-row" [nzSpan]="24" [nzExtra]="extraTemplate">
+        <nz-card nzTitle="Ejemplo card">
+            <p>Card content</p>
+            <p>Card content</p>
+            <p>Card content</p>
+        </nz-card>
+        <ng-template #extraTemplate>
+            <a>More</a>
+          </ng-template>
     </div>
 
 </div>

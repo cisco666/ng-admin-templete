@@ -1,16 +1,6 @@
 <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
     <div nz-col class="gutter-row" [nzSpan]="15">
-        <div class="card-panel">
-            <div nz-row>
-                <div nz-col nzSpan="8">
-                    <h3 class="card-title">{{ headerTitle }}</h3>
-                </div>
-                <div nz-col nzSpan="4">
-                    <a [routerLink]="['/usuarios']" nz-button nzType="primary" nzSize="medium" nzShape="circle">
-                        <i nz-icon nzType="unordered-list" nzTheme="outline"></i>
-                    </a>
-                </div>
-            </div>
+        <nz-card [nzTitle]="headerTitle" [nzExtra]="extraTemplate">
             
             <app-loading class="mt-4" *ngIf="isUpdate && !loaded"></app-loading>
             
@@ -75,6 +65,16 @@
                 </button>
                 
             </form>
-        </div>
+        </nz-card>
+        <ng-template #extraTemplate>
+            <a 
+                [routerLink]="['/usuarios']" 
+                nz-button 
+                nzType="primary" 
+                nzSize="medium" 
+                nzShape="circle">
+                <i nz-icon nzType="unordered-list" nzTheme="outline"></i>
+            </a>
+          </ng-template>
     </div>
 </div>

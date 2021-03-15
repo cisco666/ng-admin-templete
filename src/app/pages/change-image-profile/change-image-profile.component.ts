@@ -56,8 +56,10 @@ export class ChangeImageProfileComponent implements OnInit {
     this.currentUser = new Usuario;
     this.currentUser = this.authService.getCurrentUser();
 
-    if (this.currentUser.imagenUsuario) {
-      this.userImage = imageSrv + '/' +  this.currentUser.imagenUsuario.dir + '/' + this.currentUser.imagenUsuario.nombre;
+    console.log(this.currentUser);
+
+    if (this.currentUser.imagenes_usuario) {
+      this.userImage = imageSrv + '/' +  this.currentUser.imagenes_usuario.dir + '/' + this.currentUser.imagenes_usuario.nombre;
     } else { 
       this.userImage = DEFAULT_IMAGE;
     }
@@ -70,7 +72,7 @@ export class ChangeImageProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title.setTitle('Subir Imágen');
+    this.title.setTitle('Cambiar imágen de perfil');
     this.percent = 0;
   }
 
@@ -123,10 +125,10 @@ export class ChangeImageProfileComponent implements OnInit {
 
   reloadData(data): void { 
     localStorage.removeItem('current_user');
-    this.currentUser.imagenUsuario = new ImagenUsuario();
-    this.currentUser.imagenUsuario = data;
+    this.currentUser.imagenes_usuario = new ImagenUsuario();
+    this.currentUser.imagenes_usuario = data;
     localStorage.setItem('current_user', JSON.stringify(this.currentUser));
 
-    this.imagenService.changeImageDir(this.currentUser.imagenUsuario);
+    this.imagenService.changeImageDir(this.currentUser.imagenes_usuario);
   }
 }

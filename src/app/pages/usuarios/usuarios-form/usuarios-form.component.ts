@@ -41,7 +41,7 @@ export class UsuariosFormComponent implements OnInit {
   ngOnInit(): void {
 
     this.usuario = new Usuario();
-    this.usuario.imagenUsuario = new ImagenUsuario();
+    this.usuario.imagenes_usuario = new ImagenUsuario();
 
     this.usuarioId = this.actRoute.snapshot.paramMap.get('id');
 

@@ -38,7 +38,7 @@ export class AuthLoginComponent implements OnInit {
     });
 
     if (this.authService.isLoggedIn) { 
-      //this.router.navigate(['dashboard'], { replaceUrl: true });
+      this.router.navigate(['welcome'], { replaceUrl: true });
     }
   }
 
@@ -58,7 +58,7 @@ export class AuthLoginComponent implements OnInit {
 
       let login = new Login();
       login.usuario = new Usuario();
-      login.usuario.imagenUsuario = new ImagenUsuario();
+      login.usuario.imagenes_usuario = new ImagenUsuario();
 
       this.authService.signIn(this.signinForm.value)
         .toPromise()

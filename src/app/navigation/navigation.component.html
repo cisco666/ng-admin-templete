@@ -33,10 +33,10 @@
         <li nz-submenu nzTitle="Configuración" nzIcon="setting">
           <ul>
             <li nz-menu-item nzMatchRouter>
-              <a>Cambiar Contraseña</a>
+              <a [routerLink]="['usuarios/cambiar-password/' + currentUser.id]" routerLinkActive="active">Cambiar Contraseña</a>
             </li>
             <li nz-menu-item nzMatchRouter>
-              <a [routerLink]="['usuarios/cambiar-imagen/' + currentUser.id]" routerLinkActive="active">Cambiar Imagen de perfil</a>
+              <a [routerLink]="['usuarios/cambiar-imagen/' + currentUser.id]" routerLinkActive="active">Cambiar imágen de perfil</a>
             </li>
           </ul>
         </li>

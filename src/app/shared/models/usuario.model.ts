@@ -7,7 +7,7 @@ export interface IUsuario {
     password?: string;
     rol?: string;
     active?: boolean;
-    imagenUsuario?: ImagenUsuario;
+    imagenes_usuario?: ImagenUsuario;
     created?: Moment;
     modified?: Moment;
 }
@@ -19,7 +19,7 @@ export class Usuario implements IUsuario {
         public password?: string,
         public rol?: string,
         public active?: boolean,
-        public imagenUsuario?: ImagenUsuario,
+        public imagenes_usuario?: ImagenUsuario,
         public created?: Moment,
         public modified?: Moment
     ) {}

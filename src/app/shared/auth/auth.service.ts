@@ -42,7 +42,7 @@ export class AuthService {
     return (authToken !== null) ? true : false;
   }
 
-  getCurrentUser(): any {
+  getCurrentUser(): Usuario {
     return JSON.parse(localStorage.getItem('current_user'));
   }
 

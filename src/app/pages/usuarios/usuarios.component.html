@@ -20,8 +20,9 @@
                 <thead>
                     <tr>
                         <th nzColumnKey="id" nzWidth="80px">Id</th>
-                        <th nzColumnKey="imagen" nzWidth="80px">Imagen</th>
+                        <th nzColumnKey="imagen" nzWidth="50px">Imagen</th>
                         <th nzColumnKey="email">Email</th>
+                        <th nzColumnKey="rol" nzWidth="80px">Rol</th>
                         <th nzColumnKey="active" nzWidth="100px">Estatus</th>
                         <th nzColumnKey="created">Fecha de Creación</th>
                         <th nzColumnKey="created">Acciones</th>
@@ -35,6 +36,7 @@
                             <img nz-image class="image-rounded" [nzSrc]="imageSrv + '/' + usuario.imagenes_usuario.dir + '/' + usuario.imagenes_usuario.nombre" alt="" *ngIf="usuario.imagenes_usuario">
                         </td>
                         <td>{{ usuario.email }}</td>
+                        <td>{{ usuario.rol }}</td>
                         <td>
                             <span [ngClass]="
                                 {
@@ -56,8 +58,15 @@
                             </nz-button-group>
                             <nz-dropdown-menu #menu1="nzDropdownMenu" nzPlacement="topRight">
                                 <ul nz-menu>
-                                    <li nz-menu-item routerLink="editar/{{ usuario.id }}">
-                                        <i nz-icon nzType="edit" nzTheme="outline"></i> Editar
+                                    <li nz-menu-item>
+                                        <a routerLink="editar/{{ usuario.id }}">
+                                            <i nz-icon nzType="edit" nzTheme="outline"></i> Editar
+                                        </a>
+                                    </li>
+                                    <li nz-menu-item>
+                                        <a routerLink="cambiar-password/{{ usuario.id }}">
+                                            <i nz-icon nzType="lock" nzTheme="outline"></i> Cambiar Contraseña
+                                        </a>
                                     </li>
                                     <li nz-menu-item nz-popconfirm nzPopconfirmTitle="¿Desea eliminar el usuario {{ usuario.email }}?" (nzOnConfirm)="eliminar(usuario.id, usuario.email)">
                                         <i nz-icon nzType="delete" nzTheme="outline"></i> Eliminar

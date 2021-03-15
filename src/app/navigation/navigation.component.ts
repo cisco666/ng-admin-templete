@@ -29,8 +29,8 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.currentUser = new Usuario();
     this.currentUser = this.authService.getCurrentUser();
 
-    if (this.currentUser.imagenUsuario) {
-      this.userImage = imageSrv + '/' + this.currentUser.imagenUsuario.dir + '/' + this.currentUser.imagenUsuario.nombre;
+    if (this.currentUser.imagenes_usuario) {
+      this.userImage = imageSrv + '/' + this.currentUser.imagenes_usuario.dir + '/' + this.currentUser.imagenes_usuario.nombre;
     } else { 
       this.userImage = 'assets/img/default-user.png';
     }

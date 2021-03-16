@@ -8,6 +8,7 @@ import { NgZorroModule } from 'src/app/shared/ng-zorro/ng-zorro.module';
 import { IconsProviderModule } from 'src/app/icons-provider.module';
 import { UsuariosFormComponent } from './usuarios-form/usuarios-form.component';
 import { LoadingModule } from 'src/app/shared/loading/loading.module';
+import { SearchModule } from './search/search.module';
 
 @NgModule({
   declarations: [UsuariosComponent, UsuariosFormComponent],
@@ -18,7 +19,8 @@ import { LoadingModule } from 'src/app/shared/loading/loading.module';
     IconsProviderModule,
     FormsModule,
     ReactiveFormsModule,
-    LoadingModule
+    LoadingModule,
+    SearchModule
   ]
 })
 export class UsuariosModule { }

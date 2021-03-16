@@ -27,6 +27,10 @@ export class UsuariosService {
     return this.http.post<any>(`${server}/api/v1/usuarios/valida_email`, { id, email }, { observe: 'response' });
   }
 
+  public search(filter: string): any {
+    return this.http.post<any>(`${server}/api/v1/usuarios/search`, { filter }, { observe: 'response' });
+  }
+
   public index(): any {
     return this.http.get(`${server}/api/v1/usuarios`, { observe: 'response' });
   }

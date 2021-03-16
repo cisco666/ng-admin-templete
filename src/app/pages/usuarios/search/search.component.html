@@ -1,0 +1,18 @@
+<nz-modal
+    [(nzVisible)]="isVisible"
+    [nzTitle]="'Buscar Usuario'"
+    (nzOnCancel)="handleCancel()"
+    (nzOnOk)="handleOk()"
+    [nzOkLoading]="isOkLoading"
+    nzOkText="Buscar">
+
+    <form nz-form [formGroup]="searchForm">
+        <nz-form-item>
+            <nz-form-label [nzSpan]="5" nzRequired>Buscar </nz-form-label>
+            <nz-form-control [nzSpan]="16" nzHasFeedback>
+                <input nz-input type="text" formControlName="search" />
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+
+</nz-modal>

@@ -22,6 +22,7 @@ export class UsuariosComponent implements OnInit {
   pageSize = 10;
   pageIndex = 1;
   imageSrv: string;
+  isVisible = false;
   
 
   constructor(
@@ -30,6 +31,18 @@ export class UsuariosComponent implements OnInit {
     private alertService: AlertsService
   ) {
     this.imageSrv = imageSrv;
+  }
+
+  searchResponse(event) {
+    if (!event) {
+      this.isVisible = false;
+    } else {
+      this.loading = true;
+      this.usuarios = event.usuarios;
+      this.loading = false;
+      this.total = event.paginator.count;
+      this.isVisible = false;
+    }
   }
 
   ngOnInit(): void {

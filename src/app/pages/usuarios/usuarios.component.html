@@ -69,9 +69,32 @@
             </nz-table>
         </nz-card>
         <ng-template #extraTemplate>
-            <a [routerLink]="['registro']" nz-button nzType="primary" nzSize="medium" nzShape="circle">
-                <i nz-icon nzType="user-add" nzTheme="outline"></i>
-            </a>
+
+            <nz-space>
+                <nz-space-item>
+                    <a 
+                        [routerLink]="['registro']" 
+                        nz-button 
+                        nzType="primary" 
+                        nzSize="medium" 
+                        nzShape="circle">
+                        <i nz-icon nzType="user-add" nzTheme="outline"></i>
+                    </a>
+                </nz-space-item>
+                <nz-space-item>
+                    <button 
+                        type="button" 
+                        nz-button 
+                        nzType="default" 
+                        nzSize="medium" 
+                        nzShape="circle"
+                        (click)="isVisible = !isVisible">
+                        <i nz-icon nzType="search" nzTheme="outline"></i>
+                    </button>
+                </nz-space-item>
+            </nz-space>
         </ng-template>
     </div>
 </div>
+
+<app-search [isVisible]="isVisible" (searchCompleted)="searchResponse($event)"></app-search>
